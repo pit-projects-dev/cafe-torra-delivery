@@ -1,14 +1,61 @@
-<!-- Seção de Avaliação da Experiência (US11) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Torra | E-commerce e Delivery de Cafés Especiais</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="logo">
+            <i class="fa-solid fa-mug-hot"></i>
+            <span>Café Torra</span>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="input-busca" placeholder="Buscar cafés, grãos ou notas sensoriais...">
+            <button><i class="fa-solid fa-search"></i></button>
+        </div>
+        <div class="user-actions">
+            <button id="btn-carrinho" onclick="toggleCarrinho()">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="contador-carrinho">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Filtros por Métodos de Preparo e Intensidade (US10) -->
+    <nav class="filtros-container">
+        <button class="filtro-btn ativo" onclick="filtrarProdutos('todos')">Todos</button>
+        <button class="filtro-btn" onclick="filtrarProdutos('Espresso')">Espresso</button>
+        <button class="filtro-btn" onclick="filtrarProdutos('V60')">V60 / Coados</button>
+        <button class="filtro-btn" onclick="filtrarProdutos('Prensa')">Prensa Francesa</button>
+        <button class="filtro-btn" onclick="filtrarProdutos('Intensidade Alta')">Alta Intensidade</button>
+    </nav>
+
+    <!-- Vitrine de Produtos (US02) -->
+    <main class="container-vitrine">
+        <h2>Vitrine de Cafés Especiais</h2>
+        <div class="grid-produtos" id="grid-produtos">
+            <!-- Os produtos são injetados dinamicamente via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Seção de Avaliação da Experiência (US11) -->
     <section class="container-avaliacao">
         <h2>Avalie sua Experiência com o Café</h2>
         <div class="form-avaliacao">
             <p>O café chegou quente e no ponto ideal?</p>
             <div class="estrelas" id="grupo-estrelas">
-                <i class="fa-solid fa-star" data-valor="1" onclick="selecionarEstrela(1)"></i>
-                <i class="fa-solid fa-star" data-valor="2" onclick="selecionarEstrela(2)"></i>
-                <i class="fa-solid fa-star" data-valor="3" onclick="selecionarEstrela(3)"></i>
-                <i class="fa-solid fa-star" data-valor="4" onclick="selecionarEstrela(4)"></i>
-                <i class="fa-solid fa-star" data-valor="5" onclick="selecionarEstrela(5)"></i>
+                <i class="fa-solid fa-star selecionada" data-valor="1" onclick="selecionarEstrela(1)"></i>
+                <i class="fa-solid fa-star selecionada" data-valor="2" onclick="selecionarEstrela(2)"></i>
+                <i class="fa-solid fa-star selecionada" data-valor="3" onclick="selecionarEstrela(3)"></i>
+                <i class="fa-solid fa-star selecionada" data-valor="4" onclick="selecionarEstrela(4)"></i>
+                <i class="fa-solid fa-star selecionada" data-valor="5" onclick="selecionarEstrela(5)"></i>
             </div>
             <select id="temperatura-aval">
                 <option value="Quente e Perfeito">Quente e Perfeito</option>
@@ -19,3 +66,38 @@
             <button class="btn-enviar-aval" onclick="enviarAvaliacao()">Enviar Avaliação</button>
         </div>
     </section>
+
+    <!-- Carrinho de Compras / Drawer (US03 / US04 / US13) -->
+    <div class="drawer-carrinho" id="drawer-carrinho">
+        <div class="drawer-header">
+            <h3>Seu Carrinho de Café</h3>
+            <button onclick="toggleCarrinho()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="drawer-items" id="drawer-items">
+            <!-- Itens do carrinho -->
+        </div>
+        <div class="drawer-footer">
+            <div class="cupom-box">
+                <input type="text" id="input-cupom" placeholder="Cupom (ex: PRIMEIRA TORRA)">
+                <button onclick="aplicarCupom()">Aplicar</button>
+            </div>
+            <div class="totais">
+                <p>Subtotal: <span id="val-subtotal">R\$ 0,00</span></p>
+                <p>Frete: <span id="val-frete">R\$ 15,00</span></p>
+                <p class="desconto-txt">Desconto: <span id="val-desconto">R\$ 0,00</span></p>
+                <h3>Total: <span id="val-total">R\$ 15,00</span></h3>
+            </div>
+            <button class="btn-checkout" onclick="finalizarCheckout()">Finalizar Pedido (Pix)</button>
+        </div>
+    </div>
+
+    <!-- Modal de Pagamento Pix (US05) -->
+    <div class="modal-overlay" id="modal-pix">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Pagamento via PIX</h3>
+                <button onclick="fecharModalPix()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="pix-body">
+                <p>Escaneie o QR Code abaixo ou copie a chave PIX:</p>
+                <div class="qr-code-box">
