@@ -82,10 +82,10 @@
                 <button onclick="aplicarCupom()">Aplicar</button>
             </div>
             <div class="totais">
-                <p>Subtotal: <span id="val-subtotal">R\$ 0,00</span></p>
-                <p>Frete: <span id="val-frete">R\$ 15,00</span></p>
-                <p class="desconto-txt">Desconto: <span id="val-desconto">R\$ 0,00</span></p>
-                <h3>Total: <span id="val-total">R\$ 15,00</span></h3>
+                <p>Subtotal: <span id="val-subtotal">R$ 0,00</span></p>
+                <p>Frete: <span id="val-frete">R$ 15,00</span></p>
+                <p class="desconto-txt">Desconto: <span id="val-desconto">R$ 0,00</span></p>
+                <h3>Total: <span id="val-total">R$ 15,00</span></h3>
             </div>
             <button class="btn-checkout" onclick="finalizarCheckout()">Finalizar Pedido (Pix)</button>
         </div>
@@ -101,3 +101,23 @@
             <div class="pix-body">
                 <p>Escaneie o QR Code abaixo ou copie a chave PIX:</p>
                 <div class="qr-code-box">
+                    <i class="fa-solid fa-qrcode fa-5x"></i>
+                </div>
+                <div class="copia-cola">
+                    <input type="text" value="00020126580414br.gov.bcb.pix..." readonly id="chave-pix-input">
+                    <button onclick="copiarChavePix()">Copiar Chave</button>
+                </div>
+                <p class="timer-pix">Expira em: <span id="tempo-pix">10:00</span></p>
+                <button class="btn-confirmar-pix" onclick="simularConfirmacaoPix()">Simular Pagamento Aprovado</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Café Torra | Desenvolvido por Larissa Amanda Pereira da Silva Tomaz (RGM: 35741775)</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
