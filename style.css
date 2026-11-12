@@ -22,7 +22,6 @@ body {
     min-height: 100vh;
 }
 
-/* Cabeçalho */
 .header {
     background-color: var(--primary);
     color: white;
@@ -84,7 +83,6 @@ body {
     border-radius: 50%;
 }
 
-/* Filtros */
 .filtros-container {
     display: flex;
     justify-content: center;
@@ -111,7 +109,6 @@ body {
     border-color: var(--primary);
 }
 
-/* Vitrine */
 .container-vitrine {
     max-width: 1200px;
     margin: 30px auto;
@@ -174,7 +171,6 @@ body {
     background: var(--primary);
 }
 
-/* Seção de Avaliação */
 .container-avaliacao {
     max-width: 600px;
     margin: 40px auto;
@@ -241,7 +237,6 @@ body {
     background: var(--secondary);
 }
 
-/* Carrinho Drawer */
 .drawer-carrinho {
     position: fixed;
     top: 0;
@@ -334,7 +329,6 @@ body {
     margin-top: 10px;
 }
 
-/* Modal Pix */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -417,7 +411,6 @@ body {
     cursor: pointer;
 }
 
-/* Rodapé */
 footer {
     text-align: center;
     padding: 20px;
