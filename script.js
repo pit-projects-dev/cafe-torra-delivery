@@ -1,4 +1,3 @@
-// Base de Produtos de Cafés Especiais (US02 / US10)
 const produtos = [
     {
         id: 1,
@@ -41,7 +40,6 @@ const produtos = [
 let carrinho = [];
 let notaSelecionada = 5;
 
-// Renderizar Produtos na Vitrine
 function renderizarProdutos(lista) {
     const grid = document.getElementById("grid-produtos");
     if (!grid) return;
@@ -61,7 +59,6 @@ function renderizarProdutos(lista) {
     });
 }
 
-// Filtrar Produtos (US10)
 function filtrarProdutos(categoria) {
     document.querySelectorAll(".filtro-btn").forEach(btn => btn.classList.remove("ativo"));
     event.target.classList.add("ativo");
@@ -77,7 +74,6 @@ function filtrarProdutos(categoria) {
     }
 }
 
-// Carrinho de Compras (US03 / US04)
 function toggleCarrinho() {
     const drawer = document.getElementById("drawer-carrinho");
     drawer.classList.toggle("ativo");
@@ -98,7 +94,7 @@ function atualizarCarrinho() {
     itensContainer.innerHTML = "";
     let subtotal = 0;
 
-    carrinho.forEach((item, index) => {
+    carrinho.forEach((item) => {
         subtotal += item.preco;
         const div = document.createElement("div");
         div.style.cssText = "display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; border-bottom: 1px solid #eee; padding-bottom: 5px;";
@@ -113,7 +109,6 @@ function atualizarCarrinho() {
     document.getElementById("val-total").innerText = `R$ ${(subtotal + 15).toFixed(2).replace('.', ',')}`;
 }
 
-// Cupons e Checkout Pix (US05 / US13)
 function aplicarCupom() {
     const cupom = document.getElementById("input-cupom").value.trim().toUpperCase();
     if (cupom === "PRIMEIRA TORRA") {
@@ -148,7 +143,6 @@ function simularConfirmacaoPix() {
     toggleCarrinho();
 }
 
-// Lógica de Avaliação (US11)
 function selecionarEstrela(nota) {
     notaSelecionada = nota;
     let estrelas = document.querySelectorAll("#grupo-estrelas i");
@@ -175,7 +169,6 @@ function enviarAvaliacao() {
     selecionarEstrela(5);
 }
 
-// Inicializar vitrine ao carregar a página
 window.onload = function() {
     renderizarProdutos(produtos);
 };
